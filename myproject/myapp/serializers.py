@@ -4,7 +4,8 @@ from .models import WatchList,StreamPlatform,Review
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields="__all__"
+        # fields="__all__"
+        exclude=("watchlist",)
 
 class WatchListserializer(serializers.ModelSerializer):
     review=ReviewSerializer(read_only=True,many=True)
@@ -15,9 +16,7 @@ class WatchListserializer(serializers.ModelSerializer):
 
     def get_review_avg(self,object):
         reviews=object.review.all()
-        print(object)
         average=[]
-        print(reviews)
         if reviews.count() == 0:
             return 'No Review'
         for rating in reviews:
