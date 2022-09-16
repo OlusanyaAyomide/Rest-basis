@@ -9,3 +9,17 @@ class ReviewEditPermission(permissions.BasePermission):
                 return True
             else:
                 return False
+
+class WatchAddPermission(permissions.BasePermission):
+    def has_permission(self,request,view):
+        if request.method in permissions.SAFE_METHODS:
+            print("safe")
+            return True
+        else:
+            if request.user.is_staff:
+                print("staff")
+                return True
+            else:
+                print("non staff")
+                return False
+          

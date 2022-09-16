@@ -34,3 +34,16 @@ class Review(models.Model):
         if self.description:
             return f"{self.description} | {self.watchlist.name}"
         return  f"{self.rating}  | {self.watchlist.name}"
+
+class Profile(models.Model):
+    profile_user= models.OneToOneField(User,on_delete=models.CASCADE,related_name="user_profile")
+    profile_image=models.FileField(upload_to="xmedia",null=True)
+    slug=models.SlugField(default="slug",null=True)
+
+
+    def __str__(self):
+        return f"{self.profile_user.username} Profile"
+    
+    def save(self,*args,**kwargs):
+        self.slug=f"{self.profile_user.username} profile"
+        super().save(*args,**kwargs)

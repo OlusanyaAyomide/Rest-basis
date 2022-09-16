@@ -26,10 +26,11 @@ class UserSerializer(serializers.ModelSerializer):
         return data
 
     def save(self):
-        new_user=User.objects.create(
+        new_user=User(
             username=self.validated_data["username"],
-            email=self.validated_data["email"],
-            password=self.validated_data["password"])
+            email=self.validated_data["email"])
+        new_user.set_password(self.validated_data["password"])
+        new_user.save()
         return new_user
 
     

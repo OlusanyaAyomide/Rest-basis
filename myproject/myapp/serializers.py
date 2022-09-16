@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import WatchLists,StreamPlatform,Review
+from .models import WatchLists,StreamPlatform,Review,Profile
 
 class ReviewSerializer(serializers.ModelSerializer):
     review_user=serializers.StringRelatedField(read_only=True)
@@ -32,5 +32,11 @@ class Platformserializer(serializers.ModelSerializer):
         model = StreamPlatform
         fields='__all__'
 
+        
+class ProfileSerializer(serializers.ModelSerializer):
+    profile_user=serializers.StringRelatedField(read_only=True)   
+    class Meta:
+        model =Profile
+        fields="__all__"
 
 
