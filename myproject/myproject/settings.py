@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-1$$5x*)c4q@@wsc07y@c!on!s^x1jff$gmgi6fnrsgbnwdv&y+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["jumper.pythonanywhere.com/"]
 
 
 # Application definition
