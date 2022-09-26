@@ -2,8 +2,8 @@ from platform import platform
 from rest_framework.views import APIView
 from rest_framework import mixins,generics
 from rest_framework.response import Response
-from .models import WatchLists,StreamPlatform,Review,Profile
-from .serializers import Platformserializer, WatchListserializer,ReviewSerializer,ProfileSerializer
+from .models import WatchLists,StreamPlatform,Review,Profile,Photos
+from .serializers import Platformserializer, WatchListserializer,ReviewSerializer,ProfileSerializer,PhotosSerializer
 from rest_framework.exceptions import ValidationError
 from .permissions import ReviewEditPermission,WatchAddPermission
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
@@ -140,3 +140,7 @@ class ReviewCreate(generics.ListCreateAPIView):
 class ProfileListGV(generics.ListAPIView):
     queryset=Profile.objects.all()
     serializer_class=ProfileSerializer
+
+class PhotoGv(generics.ListCreateAPIView):
+    queryset = Photos.objects.all()
+    serializer_class=PhotosSerializer

@@ -10,5 +10,6 @@ urlpatterns = [
     path("review/<int:pk>",views.ReviewDetail.as_view(),name="review-detail"),
     path("stream/<int:pk>/review",views.WatchReview.as_view(),name="watchreview"),
     path("stream/<int:pk>/review-create",views.ReviewCreate.as_view(),name="review-create"),
-    path('profile',views.ProfileListGV.as_view(),name="profile-list")
+    path('profile',views.ProfileListGV.as_view(),name="profile-list"),
+    path('photos',views.PhotoGv.as_view(),name="photos")
 ]

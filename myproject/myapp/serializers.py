@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import WatchLists,StreamPlatform,Review,Profile
+from .models import WatchLists,StreamPlatform,Review,Profile,Photos
 
 class ReviewSerializer(serializers.ModelSerializer):
     review_user=serializers.StringRelatedField(read_only=True)
@@ -39,4 +39,13 @@ class ProfileSerializer(serializers.ModelSerializer):
         model =Profile
         fields="__all__"
 
+class PhotosSerializer(serializers.ModelSerializer):
+    path = serializers.SerializerMethodField()
+    class Meta:
+        model = Photos
+        fields=["title","image","path"]
+
+    def get_path(self,object):
+        obj = f"https://res.cloudinary.com/da3wqzkz3/image/upload/v1664193313/{object.image}"
+        return(obj)
 
